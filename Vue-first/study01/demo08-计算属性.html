@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--suppress JSValidateTypes -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="app">
+         <p>currentTime1:{{currentTime1()}}</p>
+         <p>currentTime2:{{currentTime2}}</p>
+    </div>
+
+    <!--导入JS文件-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let vm=new Vue({
+            el: '#app',
+            data: {
+                message:'hello,mf'
+            },
+            methods: {
+                currentTime1:function (){
+                    return Date.now();//返回一个时间戳
+                }
+            },
+            computed: {//Vue特色：计算属性  methods和computed中的方法名不能重名，重名之后只会调用methods方法
+                currentTime2:function (){
+                    this.message;//只有this当中的属性变化时才会重新计算
+                    return Date.now();//返回一个时间戳
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

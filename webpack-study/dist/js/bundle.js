@@ -1,0 +1,1 @@
+(()=>{var r={645:(r,t)=>{t.sayHi=function(){document.write("<h1>mafu学Vue</h1>")},t.sayHi2=function(){document.write("<h1>mafu学Vue</h1>")}}},t={};(function e(u){var i=t[u];if(void 0!==i)return i.exports;var n=t[u]={exports:{}};return r[u](n,n.exports,e),n.exports})(645).sayHi()})();

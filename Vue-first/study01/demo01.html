@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  view层  模板-->
+    <div id="app">
+<!--        {{message}}-->
+        <span v-bind:title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+    </div>
+<!--  导入vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+<!--   vm:对象  el:元素  data:数据  -->
+        let vm=new Vue({
+            el:"#app",
+            //Model：data
+            data:{
+                message:"hello,Vue!"
+            }
+        });
+    //ViewModel:通过vm.message动态双向绑定更新值
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="sayHello">点击</button>
+</div>
+<script>
+<!--    Vue有七大属性  有事件就有方法：method-->
+    let vm=new Vue({
+        el: "#app",
+        data: {
+            message:"mafu!"
+        },
+        methods: {//方法必须定义在Vue的Method属性中 v-on:事件 监听
+            sayHello: function (){//this指向vm这个对象
+                alert(this.message);
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--suppress JSValidateTypes -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--简写 v-bind: 简写为：  v-on:简写为@-->
+    <div id="app">
+        <todo></todo>
+        <todo-title slot="todo-title" :title="title"></todo-title>
+        <todo-items slot="todo-items" v-for="(item,index) in todoItems"
+                    :item="item" :index="index" @remove="removeItem(index)" :key="index"></todo-items>
+    </div>
+
+    <!--导入JS文件-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //后面加个反斜杠，表示换行
+        //slot:插槽，插数据
+        Vue.component('todo',{
+            template: '<div>\
+                          <slot name="todo-title"></slot>\
+                          <ul>\
+                             <slot name="todo-items"></slot>\
+                          </ul>\
+                        </div>'
+        });
+        Vue.component('todo-title',{
+            props:['title'],
+           template: '<div>{{title}}</div>'
+        });
+        Vue.component('todo-items',{
+            props: ['item','index'],
+            //只能绑定当前组件的方法
+            template: '<li>{{index}}===={{item}} <button @click="remove">delete</button></li>',
+            methods: {
+                remove: function (index){
+                    //this.$emit自定义事件分发
+                    this.$emit('remove',index);
+                }
+            }
+        });
+
+        let vm=new Vue({
+            el: '#app',
+            data: {
+                title: '神雕侠侣',
+                todoItems: ['杨过','郭靖','黄蓉']
+            },
+            methods: {
+                //操作数组万能方法：splice
+                removeItem: function (index){
+                    console.log("删除了=》"+this.todoItems[index]);
+                    this.todoItems.splice(index,1);//一次只移除一个元素
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
